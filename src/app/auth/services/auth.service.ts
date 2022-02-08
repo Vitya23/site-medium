@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface';
 import { HttpClient } from '@angular/common/http';
+import { CurrentUserInputInterface } from 'src/app/shared/types/currentUserInput.interface';
 
 @Injectable()
 export class AuthService {
@@ -33,5 +34,11 @@ export class AuthService {
   getCurrentUser(): Observable<CurrentUserInterface> {
     const url = environment.apiUrl + '/user';
     return this.http.get(url).pipe(map(this.getUser));
+  }
+  updateCurrentUser(
+    user: CurrentUserInputInterface
+  ): Observable<CurrentUserInterface> {
+    const url = environment.apiUrl + '/user';
+    return this.http.put(url, { user }).pipe(map(this.getUser));
   }
 }

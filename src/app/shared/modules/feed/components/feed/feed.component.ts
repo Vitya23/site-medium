@@ -8,7 +8,14 @@ import {
 } from './../../store/selectors';
 import { Observable, Subscription } from 'rxjs';
 import { getFeedAction } from './../../store/actions/getFeed.action';
-import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import {
+  Component,
+  Input,
+  OnChanges,
+  OnDestroy,
+  OnInit,
+  SimpleChanges,
+} from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { GetFeedResponseInterface } from '../../types/GetFeedResponseInterface.interface';
 import { parseUrl, stringify } from 'query-string';
@@ -18,7 +25,7 @@ import { parseUrl, stringify } from 'query-string';
   templateUrl: './feed.component.html',
   styleUrls: ['./feed.component.scss'],
 })
-export class FeedComponent implements OnInit, OnDestroy {
+export class FeedComponent implements OnInit, OnDestroy, OnChanges {
   @Input('apiUrl') apiUrlProps: string;
 
   isLoading$: Observable<boolean>;
@@ -40,6 +47,19 @@ export class FeedComponent implements OnInit, OnDestroy {
     this.initializeListeners();
   }
 
+  ngOnChanges(changes: SimpleChanges): void {
+    const apiUrlChanged =
+      !changes.apiUrlProps.firstChange &&
+      changes.apiUrlProps.currentValue !== changes.apiUrlProps.previousValue;
+    if (apiUrlChanged) {
+      this.fetchFeed();
+    }
+  }
+
+  ngOnDestroy(): void {
+    this.queryParamsSubscription.unsubscribe();
+  }
+
   initializeValues(): void {
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
@@ -51,7 +71,7 @@ export class FeedComponent implements OnInit, OnDestroy {
     this.queryParamsSubscription = this.route.queryParams.subscribe(
       (params: Params) => {
         this.currentPage = Number(params.page || '1');
-        console.log(this.currentPage);
+
         this.fetchFeed();
       }
     );
@@ -68,9 +88,5 @@ export class FeedComponent implements OnInit, OnDestroy {
     const apiUrlWithParams = `${parsedUrl.url}?${stringifyParams}`;
 
     this.store.dispatch(getFeedAction({ url: apiUrlWithParams }));
-  }
-
-  ngOnDestroy(): void {
-    this.queryParamsSubscription.unsubscribe();
   }
 }

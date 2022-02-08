@@ -1,0 +1,12 @@
+<button
+  class="btn btn-sm action-btn ng-binding btn-outline-secondary"
+  type="submit"
+  (click)="handleFollow()"
+>
+  <i class="ion-plus-round" *ngIf="!isFollowingProps">
+    &nbsp; Follow {{ username }}</i
+  >
+  <i class="ion-minus-round" *ngIf="isFollowingProps">
+    &nbsp; Unfollow {{ username }}</i
+  >
+</button>

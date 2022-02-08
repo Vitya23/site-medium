@@ -1,3 +1,6 @@
+import { UserProfileModule } from './userProfile/userProfile.module';
+import { EditArticleModule } from './editArticle/editArticle.module';
+import { CreateArticleModule } from './createArticle/createArticle.module';
 import { GlobalFeedModule } from './globalFeed/globalFeed.module';
 import { AuthInterceptor } from './shared/services/authinterceptor.service';
 import { PersistanceService } from './shared/services/persistance.service';
@@ -14,6 +17,10 @@ import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { environment } from 'src/environments/environment';
 import { EffectsModule } from '@ngrx/effects';
 import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
+import { YourFeedModule } from './yourFeed/yourFeed.module';
+import { TagsFeedModule } from './tagsFeed/tagsFeed.module';
+import { ArticleModule } from './article/article.module';
+import { SettingsModule } from './settings/settings.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,6 +41,13 @@ import { routerReducer, StoreRouterConnectingModule } from '@ngrx/router-store';
     }),
     TopBarModule,
     GlobalFeedModule,
+    YourFeedModule,
+    TagsFeedModule,
+    CreateArticleModule,
+    ArticleModule,
+    EditArticleModule,
+    SettingsModule,
+    UserProfileModule,
   ],
   providers: [
     PersistanceService,

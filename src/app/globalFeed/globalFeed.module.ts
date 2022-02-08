@@ -5,6 +5,7 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { GlobalFeedComponent } from './components/globalFeed/globalFeed.component';
 import { PopularTagsModule } from '../shared/modules/popularTags/popularTags.module';
+import { FeedTogglerModule } from '../shared/modules/feedToggler/feedToggler.module';
 
 const routes = [
   {
@@ -20,6 +21,7 @@ const routes = [
     FeedModule,
     BannerModule,
     PopularTagsModule,
+    FeedTogglerModule,
   ],
   declarations: [GlobalFeedComponent],
 })

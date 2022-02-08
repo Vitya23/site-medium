@@ -1,3 +1,5 @@
+import { LogoutEffect } from './store/effects/logout.effect';
+import { updateCurrentUserEffect } from './store/effects/updateCurrentUser.effect';
 import { getCurrentUserEffect } from './store/effects/getCurrentUser.effect';
 import { LoginComponent } from './components/login/login.component';
 import { loginEffect } from './store/effects/login.effect';
@@ -38,6 +40,8 @@ const routes: Routes = [
       RegisterEffect,
       loginEffect,
       getCurrentUserEffect,
+      updateCurrentUserEffect,
+      LogoutEffect,
     ]),
   ],
   providers: [AuthService, PersistanceService],
