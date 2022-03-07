@@ -4,7 +4,13 @@ import { Subscription, Observable, combineLatest } from 'rxjs';
 import { ArticleInterface } from 'src/app/shared/types/article.interface';
 import { ActivatedRoute } from '@angular/router';
 import { getArticleAction } from './../../store/actions/getArticle.action';
-import { Component, OnInit, OnDestroy } from '@angular/core';
+import {
+  Component,
+  OnInit,
+  OnDestroy,
+  OnChanges,
+  SimpleChanges,
+} from '@angular/core';
 import { Store, select } from '@ngrx/store';
 import {
   articleSelector,
@@ -34,6 +40,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
     this.initializeListeners();
     this.fetchData();
   }
+
   ngOnDestroy(): void {
     this.articleSub.unsubscribe();
   }

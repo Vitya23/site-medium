@@ -1,6 +1,6 @@
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
-import { map } from 'rxjs/operators';
+
 import {
   isLoadingSelector,
   errorSelector,

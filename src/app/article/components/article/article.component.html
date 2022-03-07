@@ -1,4 +1,4 @@
-<div class="article-page">
+<div class="article-page ng-scope">
   <div class="banner">
     <div class="container" *ngIf="article">
       <h1>{{ article.title }}</h1>
@@ -43,6 +43,14 @@
           <p>{{ article.body }}</p>
         </div>
         <app-tag-list [tags]="article.tagList"></app-tag-list>
+      </div>
+    </div>
+  </div>
+
+  <div class="row" *ngIf="article">
+    <div class="col-xs-12 col-md-8 offset-md-2">
+      <div style="display: inherit">
+        <app-comments [slug]="slug" [article]="article"></app-comments>
       </div>
     </div>
   </div>

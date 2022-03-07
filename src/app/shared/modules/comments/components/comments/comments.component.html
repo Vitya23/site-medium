@@ -1,0 +1,29 @@
+<form
+  [formGroup]="form"
+  class="card comment-form ng-valid ng-dirty ng-valid-parse"
+>
+  <div class="card-block">
+    <textarea
+      formControlName="body"
+      class="form-control ng-valid ng-dirty ng-valid-parse ng-empty ng-touched"
+      placeholder="Write a comment..."
+      rows="3"
+    ></textarea>
+  </div>
+  <div class="card-footer">
+    <img
+      [src]="articleProps.author.image"
+      alt="author"
+      class="comment-author-img"
+    />
+    <button (click)="onSubmit()" class="btn btn-sm btn-primary" type="submit">
+      Post Comment
+    </button>
+  </div>
+</form>
+
+<div *ngIf="comments$ | async">
+  <div *ngFor="let comment of (comments$ | async).comments">
+    <app-comment [comments]="comment" [slugProps]="slugProps"></app-comment>
+  </div>
+</div>

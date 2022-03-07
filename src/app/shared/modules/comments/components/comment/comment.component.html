@@ -1,0 +1,24 @@
+<div class="card">
+  <div class="card-block">
+    <p class="card-text">
+      {{ comment.body }}
+    </p>
+  </div>
+  <div class="card-footer">
+    <a class="comment-author">
+      <img [src]="comment.author.image" class="comment-author-img" alt="" />
+    </a>
+    &nbsp;
+    <a href="" class="comment-author">{{ comment.author.username }}</a>
+    <span class="date-posted">
+      {{ comment.createdAt }}
+    </span>
+    <span
+      class="mod-options"
+      *ngIf="isAuthor$ | async"
+      (click)="deleteComment()"
+    >
+      <i class="ion-trash-a"></i>
+    </span>
+  </div>
+</div>

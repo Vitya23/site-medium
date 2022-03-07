@@ -1,3 +1,4 @@
+import { CommentsModule } from './../shared/modules/comments/comments.module';
 import { deleteArticleEffect } from './store/effects/deleteArticle.effect';
 import { ArticleService as SharedArticleService } from './../shared/services/article.service';
 import { TagListModule } from './../shared/modules/tag-list/tag-list.module';
@@ -29,6 +30,7 @@ const routes = [
     ErrorMessageModule,
     TagListModule,
     LoadingModule,
+    CommentsModule,
   ],
   providers: [SharedArticleService, ArticleService],
   declarations: [ArticleComponent],
