@@ -12,6 +12,7 @@ import { CurrentUserInterface } from 'src/app/shared/types/currentUser.interface
 import { currentUserSelector } from 'src/app/auth/store/selectors';
 import { map } from 'rxjs/operators';
 import { deleteCommentsAction } from '../../store/actions/deleteComments.action';
+import { ArticleInterface } from 'src/app/shared/types/article.interface';
 
 @Component({
   selector: 'app-comment',
@@ -21,6 +22,7 @@ import { deleteCommentsAction } from '../../store/actions/deleteComments.action'
 export class CommentComponent implements OnInit, OnChanges {
   @Input('comments') comment: CommentsInterface;
   @Input() slugProps: string;
+  @Input('article') articleProps: ArticleInterface | null;
   isAuthor$: Observable<boolean>;
 
   constructor(private store: Store) {}
@@ -31,16 +33,13 @@ export class CommentComponent implements OnInit, OnChanges {
         if (!this.comment.author || !currentUser) {
           return false;
         }
-        console.log(this.comment.author.username);
+
         return currentUser.username === this.comment.author.username;
       })
     );
-    console.log(this.comment);
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log(changes);
-  }
+  ngOnChanges(changes: SimpleChanges): void {}
 
   deleteComment(): void {
     this.store.dispatch(

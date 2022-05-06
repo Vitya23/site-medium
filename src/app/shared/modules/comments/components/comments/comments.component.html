@@ -24,6 +24,10 @@
 
 <div *ngIf="comments$ | async">
   <div *ngFor="let comment of (comments$ | async).comments">
-    <app-comment [comments]="comment" [slugProps]="slugProps"></app-comment>
+    <app-comment
+      [comments]="comment"
+      [slugProps]="slugProps"
+      [article]="articleProps"
+    ></app-comment>
   </div>
 </div>

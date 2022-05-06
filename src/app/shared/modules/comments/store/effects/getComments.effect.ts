@@ -18,6 +18,7 @@ export class getCommentsEffect {
     this.actions$.pipe(
       ofType(getCommentsAction),
       switchMap(({ slug }) => {
+        console.log(slug);
         return this.commentsService.getComments(slug).pipe(
           map((comments: GetCommentsResponseInterface) => {
             return getCommentsSuccessAction({ comments });

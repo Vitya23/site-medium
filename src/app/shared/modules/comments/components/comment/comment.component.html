@@ -1,4 +1,7 @@
-<div class="card">
+<div
+  class="card"
+  *ngIf="this.comment.articleId === this.articleProps.articleId"
+>
   <div class="card-block">
     <p class="card-text">
       {{ comment.body }}
@@ -11,7 +14,7 @@
     &nbsp;
     <a href="" class="comment-author">{{ comment.author.username }}</a>
     <span class="date-posted">
-      {{ comment.createdAt }}
+      {{ comment.createdAt | date: "medium" }}
     </span>
     <span
       class="mod-options"

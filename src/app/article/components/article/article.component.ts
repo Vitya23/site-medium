@@ -27,6 +27,7 @@ import { deleteArticleAction } from '../../store/actions/deleteArticle.action';
 })
 export class ArticleComponent implements OnInit, OnDestroy {
   slug: string;
+  articleId: any;
   article: ArticleInterface | null;
   articleSub: Subscription;
   isLoading$: Observable<boolean>;
@@ -47,6 +48,7 @@ export class ArticleComponent implements OnInit, OnDestroy {
 
   initializeValues(): void {
     this.slug = this.route.snapshot.paramMap.get('slug');
+
     this.isLoading$ = this.store.pipe(select(isLoadingSelector));
     this.error$ = this.store.pipe(select(errorSelector));
 

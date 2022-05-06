@@ -1,1 +1,18 @@
-/* You can add global styles to this file, and also import other style files */
+.btn{
+    outline: none !important;
+}
+.btn:focus{
+    outline: none !important;
+    
+}
+
+.btn-primary{
+    outline: none !important;
+    
+}
+
+.btn-outline-primary:focus{
+    color: #5cb85c;
+    outline: none !important;
+    background-color:transparent;
+}

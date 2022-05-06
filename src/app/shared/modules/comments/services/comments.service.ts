@@ -14,7 +14,6 @@ export class CommentsService {
 
     return this.http.get<GetCommentsResponseInterface>(url).pipe(
       map((response: GetCommentsResponseInterface) => {
-        console.log(response);
         return response;
       })
     );
